@@ -10,6 +10,7 @@ import glisten/tcp
 import mug
 
 const port = 12_000
+
 const host = "localhost"
 
 /// Listens passively for a message from the client
@@ -47,7 +48,7 @@ pub fn main() {
   // Start the server and client processes
   process.start(fn() { server(main_subject) }, True)
   process.start(fn() { client(sentence) }, True)
-  
+
   // Wait 30s for the server to return its modified message
   let assert Ok(response) = process.receive(main_subject, 30_000)
   io.println("Response from server: " <> response)
